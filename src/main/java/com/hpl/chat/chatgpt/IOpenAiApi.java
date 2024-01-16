@@ -1,6 +1,6 @@
 package com.hpl.chat.chatgpt;
 
-import com.hpl.chat.chatgpt.common.Constant;
+import com.hpl.chat.chatgpt.common.Constants;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionRequest;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionResponse;
 import com.hpl.chat.chatgpt.domain.qa.QACompletionRequest;
@@ -21,7 +21,7 @@ public interface IOpenAiApi {
      * @param qaCompletionRequest
      * @return
      */
-    @POST(Constant.URI_V1_COMPLETIONS)
+    @POST(Constants.URI_V1_COMPLETIONS)
     Single<QACompletionResponse> completions(@Body QACompletionRequest qaCompletionRequest);
 
 
@@ -30,6 +30,6 @@ public interface IOpenAiApi {
      * @param chatCompletionRequest
      * @return
      */
-    @POST(Constant.URI_V1_CHAT_COMPLETIONS)
+    @POST(Constants.URI_V1_CHAT_COMPLETIONS)
     Single<ChatCompletionResponse> completions(@Body ChatCompletionRequest chatCompletionRequest);
 }

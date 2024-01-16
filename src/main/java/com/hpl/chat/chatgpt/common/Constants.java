@@ -4,9 +4,11 @@ package com.hpl.chat.chatgpt.common;
  * @Author: huangpenglong
  * @Date: 2024/1/14 21:10
  */
-public class Constant {
+public class Constants {
     public static final String URI_V1_COMPLETIONS = "v1/completions";
     public static final String URI_V1_CHAT_COMPLETIONS = "v1/chat/completions";
+
+    public static final String DEFAULT_HOST = "https://api.openai.com/";
 
     public static final String STREAM_SIGNAL_DONE = "[DONE]";
 

@@ -1,7 +1,7 @@
 package com.hpl.chat.chatgpt.domain.chat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.hpl.chat.chatgpt.common.Constant;
+import com.hpl.chat.chatgpt.common.Constants;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -41,7 +41,7 @@ public class Message implements Serializable {
         public Builder() {
         }
 
-        public Builder role(Constant.Role role) {
+        public Builder role(Constants.Role role) {
             this.role = role.getCode();
             return this;
         }

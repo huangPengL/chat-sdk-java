@@ -1,7 +1,7 @@
 package com.hpl.chat.chatgpt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.hpl.chat.chatgpt.common.Constant;
+import com.hpl.chat.chatgpt.common.Constants;
 import com.hpl.chat.chatgpt.domain.chat.ChatChoice;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionRequest;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionResponse;
@@ -50,7 +50,7 @@ public class ApiTest {
     public void testChatCompletionsStream() throws InterruptedException, JsonProcessingException {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 .stream(true)
-                .messages(Collections.singletonList(Message.builder().role(Constant.Role.USER).content("你好").build()))
+                .messages(Collections.singletonList(Message.builder().role(Constants.Role.USER).content("你好").build()))
                 .build();
         EventSource eventSource = this.openAiSession.chatCompletionsStream(chatCompletionRequest, new EventSourceListener() {
             @Override
@@ -70,7 +70,7 @@ public class ApiTest {
     @Test
     public void testChatCompletions(){
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
-                .messages(Collections.singletonList(Message.builder().role(Constant.Role.USER).content("你好").build()))
+                .messages(Collections.singletonList(Message.builder().role(Constants.Role.USER).content("你好").build()))
                 .build();
         ChatCompletionResponse chatCompletionResponse = this.openAiSession.chatCompletions(chatCompletionRequest);
         if(chatCompletionResponse != null){
@@ -84,7 +84,7 @@ public class ApiTest {
     public void testChatCompletionsFuture() throws InterruptedException, JsonProcessingException, ExecutionException {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 .stream(true)
-                .messages(Collections.singletonList(Message.builder().role(Constant.Role.USER).content("你好").build()))
+                .messages(Collections.singletonList(Message.builder().role(Constants.Role.USER).content("你好").build()))
                 .build();
 
         log.info("测试结果：{}", this.openAiSession.chatCompletionsFuture(chatCompletionRequest).get());

@@ -1,5 +1,6 @@
 package com.hpl.chat.chatgpt.session;
 
+import com.hpl.chat.chatglm.common.Constants;
 import com.hpl.chat.chatgpt.IOpenAiApi;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -19,20 +20,15 @@ import org.jetbrains.annotations.NotNull;
 @Builder
 public class Configuration {
 
-    @Getter
-    @Setter
     private IOpenAiApi openAiApi;
 
-    @Getter
-    @Setter
     private OkHttpClient okHttpClient;
 
-    @Getter
     @NotNull
     private String apiKey;
 
-    @Getter
-    private String apiHost;
+    @Builder.Default
+    private String apiHost = Constants.DEFAULT_HOST;
 
     /**
      * 字段废弃，不在使用

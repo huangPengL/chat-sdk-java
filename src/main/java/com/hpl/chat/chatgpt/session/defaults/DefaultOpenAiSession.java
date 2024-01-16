@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hpl.chat.chatgpt.IOpenAiApi;
-import com.hpl.chat.chatgpt.common.Constant;
+import com.hpl.chat.chatgpt.common.Constants;
 import com.hpl.chat.chatgpt.domain.chat.ChatChoice;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionRequest;
 import com.hpl.chat.chatgpt.domain.chat.ChatCompletionResponse;
@@ -73,7 +73,7 @@ public class DefaultOpenAiSession implements OpenAiSession {
         }
         // 构建请求
         Request request = new Request.Builder()
-                .url(configuration.getApiHost().concat(Constant.URI_V1_COMPLETIONS))
+                .url(configuration.getApiHost().concat(Constants.URI_V1_COMPLETIONS))
                 .post(RequestBody.create(MediaType.parse(ContentType.JSON.getValue()), new ObjectMapper().writeValueAsString(qaCompletionRequest)))
                 .build();
 
@@ -94,7 +94,7 @@ public class DefaultOpenAiSession implements OpenAiSession {
 
         // 构造请求
         Request request = new Request.Builder()
-                .url(host.concat(Constant.URI_V1_CHAT_COMPLETIONS))
+                .url(host.concat(Constants.URI_V1_CHAT_COMPLETIONS))
                 .addHeader("apiKey", apiKey)
                 .post(RequestBody.create(
                         MediaType.parse(ContentType.JSON.getValue()),
@@ -123,7 +123,7 @@ public class DefaultOpenAiSession implements OpenAiSession {
 
             @Override
             public void onEvent(EventSource eventSource, String id, String type, String data) {
-                if(Constant.STREAM_SIGNAL_DONE.equals(data)){
+                if(Constants.STREAM_SIGNAL_DONE.equals(data)){
                     onClosed(eventSource);
                     future.complete(dataCollect.toString());
                     return;
@@ -133,13 +133,13 @@ public class DefaultOpenAiSession implements OpenAiSession {
                 List<ChatChoice> choices = chatCompletionResponse.getChoices();
                 for (ChatChoice chatChoice : choices) {
                     Message delta = chatChoice.getDelta();
-                    if (Constant.Role.ASSISTANT.getCode().equals(delta.getRole())){
+                    if (Constants.Role.ASSISTANT.getCode().equals(delta.getRole())){
                         continue;
                     }
 
                     // 应答完成
                     String finishReason = chatChoice.getFinishReason();
-                    if (Constant.SIGNAL_STOP.equalsIgnoreCase(finishReason)) {
+                    if (Constants.SIGNAL_STOP.equalsIgnoreCase(finishReason)) {
                         onClosed(eventSource);
                         return;
                     }
