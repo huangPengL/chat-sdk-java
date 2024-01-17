@@ -133,6 +133,10 @@ public class DefaultOpenAiSession implements OpenAiSession {
                 for (ChatChoice chatChoice : choices) {
                     Message delta = chatChoice.getDelta();
 
+                    if(Constants.SIGNAL_STOP.equals(chatChoice.getFinishReason())){
+                        continue;
+                    }
+
                     // 发送信息
                     try {
                         dataCollect.append(delta.getContent());

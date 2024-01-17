@@ -77,6 +77,10 @@ public class DefaultGlmSession implements GlmSession {
                 for (ChatChoiceStream chatChoice : choices) {
                     Message delta = chatChoice.getDelta();
 
+                    if(Constants.SIGNAL_STOP.equals(chatChoice.getFinishReason())){
+                        continue;
+                    }
+
                     // 发送信息
                     try {
                         dataCollect.append(delta.getContent());
