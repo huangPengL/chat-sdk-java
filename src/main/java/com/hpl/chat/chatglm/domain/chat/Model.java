@@ -27,6 +27,8 @@ public enum Model {
     /** 智谱AI最新模型 */
     CHATGLM_TURBO("chatglm_turbo", "适用于对知识量、推理能力、创造力要求较高的场景"),
 
+    CHATGLM_4("glm-4", "glm-4")
+
     ;
     private final String code;
     private final String info;

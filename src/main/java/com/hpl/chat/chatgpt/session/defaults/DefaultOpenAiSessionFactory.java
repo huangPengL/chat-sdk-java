@@ -7,7 +7,6 @@ import com.hpl.chat.chatgpt.session.OpenAiSession;
 import com.hpl.chat.chatgpt.session.OpenAiSessionFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.sse.EventSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;

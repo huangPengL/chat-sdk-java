@@ -1,7 +1,7 @@
 package com.hpl.chat.chatgpt.session;
 
-import com.hpl.chat.chatglm.common.Constants;
 import com.hpl.chat.chatgpt.IOpenAiApi;
+import com.hpl.chat.chatgpt.common.Constants;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;

@@ -29,42 +29,50 @@ public class ChatCompletionRequest {
     /**
      * 模型
      */
-    private Model model = Model.CHATGLM_TURBO;
+    @Builder.Default
+    @JsonProperty("model")
+    private String model = Model.CHATGLM_TURBO.getCode();
 
     /**
      * 请求ID
      */
     @JsonProperty("request_id")
+    @Builder.Default
     private String requestId = String.format("hpl-%d", System.currentTimeMillis());
     /**
      * 控制温度【随机性】
      */
+    @Builder.Default
     private float temperature = 0.8f;
     /**
      * 多样性控制；
      */
     @JsonProperty("top_p")
+    @Builder.Default
     private float topP = 0.7f;
     /**
      * 输入给模型的会话信息
      * 用户输入的内容；role=user
      * 挟带历史的内容；role=assistant
      */
-    private List<Prompt> prompt;
+    private List<Message> messages;
     /**
      * 智普AI sse 固定参数 incremental = true 【增量返回】
      */
-    private boolean incremental = true;
+    @Builder.Default
+    private boolean stream = true;
+
     /**
      * sseformat, 用于兼容解决sse增量模式okhttpsse截取data:后面空格问题, [data: hello]。只在增量模式下使用sseFormat。
      */
+    @Builder.Default
     private String sseFormat = "data";
 
     @Data
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Prompt {
+    public static class Message {
         private String role;
         private String content;
     }
@@ -72,9 +80,10 @@ public class ChatCompletionRequest {
     @Override
     public String toString() {
         Map<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("model", model);
         paramsMap.put("request_id", requestId);
-        paramsMap.put("prompt", prompt);
-        paramsMap.put("incremental", incremental);
+        paramsMap.put("messages", messages);
+        paramsMap.put("stream", stream);
         paramsMap.put("temperature", temperature);
         paramsMap.put("top_p", topP);
         paramsMap.put("sseFormat", sseFormat);

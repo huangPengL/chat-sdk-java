@@ -125,7 +125,6 @@ public class DefaultOpenAiSession implements OpenAiSession {
             public void onEvent(EventSource eventSource, String id, String type, String data) {
                 if(Constants.STREAM_SIGNAL_DONE.equals(data)){
                     onClosed(eventSource);
-                    future.complete(dataCollect.toString());
                     return;
                 }
 
@@ -133,16 +132,6 @@ public class DefaultOpenAiSession implements OpenAiSession {
                 List<ChatChoice> choices = chatCompletionResponse.getChoices();
                 for (ChatChoice chatChoice : choices) {
                     Message delta = chatChoice.getDelta();
-                    if (Constants.Role.ASSISTANT.getCode().equals(delta.getRole())){
-                        continue;
-                    }
-
-                    // 应答完成
-                    String finishReason = chatChoice.getFinishReason();
-                    if (Constants.SIGNAL_STOP.equalsIgnoreCase(finishReason)) {
-                        onClosed(eventSource);
-                        return;
-                    }
 
                     // 发送信息
                     try {

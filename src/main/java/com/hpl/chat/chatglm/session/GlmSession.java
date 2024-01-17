@@ -1,8 +1,7 @@
 package com.hpl.chat.chatglm.session;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hpl.chat.chatglm.domain.chat.ChatCompletionRequest;
-import com.hpl.chat.chatglm.domain.chat.ChatCompletionSyncResponse;
+import com.hpl.chat.chatglm.domain.chat.ChatCompletionResponse;
 import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSourceListener;
 
@@ -19,9 +18,8 @@ public interface GlmSession {
      * @param chatCompletionRequest
      * @param eventSourceListener
      * @return
-     * @throws JsonProcessingException
      */
-    EventSource completions(ChatCompletionRequest chatCompletionRequest, EventSourceListener eventSourceListener) throws JsonProcessingException;
+    EventSource chatCompletionsStream(ChatCompletionRequest chatCompletionRequest, EventSourceListener eventSourceListener);
 
 
     /**
@@ -30,7 +28,7 @@ public interface GlmSession {
      * @return
      * @throws InterruptedException
      */
-    CompletableFuture<String> completions(ChatCompletionRequest chatCompletionRequest) throws InterruptedException;
+    CompletableFuture<String> chatCompletionsFuture(ChatCompletionRequest chatCompletionRequest) throws InterruptedException;
 
     /**
      * 普通输出
@@ -38,5 +36,5 @@ public interface GlmSession {
      * @return
      * @throws IOException
      */
-    ChatCompletionSyncResponse completionsSync(ChatCompletionRequest chatCompletionRequest) throws IOException;
+    ChatCompletionResponse chatCompletions(ChatCompletionRequest chatCompletionRequest) throws IOException;
 }

@@ -5,6 +5,7 @@ import cn.hutool.http.Header;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class OpenAiInterceptor implements Interceptor {
     }
 
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public @NotNull Response intercept(Chain chain) throws IOException {
 
         Request originalRequest = chain.request();
 

@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Data
-public class ChatCompletionResponse {
+public class ChatCompletionStreamResponse {
 
     /**
      * ID
@@ -25,7 +25,7 @@ public class ChatCompletionResponse {
     /**
      * 对话
      */
-    private List<ChatChoice> choices;
+    private List<ChatChoiceStream> choices;
     /**
      * 创建
      */

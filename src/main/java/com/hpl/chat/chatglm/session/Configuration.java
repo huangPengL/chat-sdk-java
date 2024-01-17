@@ -24,6 +24,7 @@ public class Configuration {
     /**
      * 智普Ai ChatGlM 请求地址
      */
+    @Builder.Default
     private String apiHost = Constants.DEFAULT_HOST;
 
     /**
@@ -57,17 +58,8 @@ public class Configuration {
     /**
      * OkHttp 配置信息
      */
-    private HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.HEADERS;
+    @Builder.Default
+    private HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
 
-    private long connectTimeout = 450;
 
-    private long writeTimeout = 450;
-
-    private long readTimeout = 450;
-
-    // http keywords
-    public static final String SSE_CONTENT_TYPE = "text/event-stream";
-    public static final String DEFAULT_USER_AGENT = "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)";
-    public static final String APPLICATION_JSON = "application/json";
-    public static final String JSON_CONTENT_TYPE = APPLICATION_JSON + "; charset=utf-8";
 }

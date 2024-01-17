@@ -17,8 +17,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
@@ -31,14 +29,13 @@ import java.util.concurrent.ExecutionException;
 public class ApiTest {
 
     public static final String OPENAI_HOST = "https://api.openai.com/";
-    public static final String OPENAI_APIKEY = "sess-p7zSN1g8Ds6CMEegbTJeOpWUrabBzlwpZ0YuzCpJ";
+    public static final String OPENAI_APIKEY = "sess-wiq6uLThvreDArt0qBukWhmHH8vzNXUgbkNZV1js";
 
     private OpenAiSession openAiSession;
 
     @Before
     public void testOpenAiSessionFactory(){
         Configuration configuration = Configuration.builder()
-                .apiHost(OPENAI_HOST)
                 .apiKey(OPENAI_APIKEY)
                 .build();
         DefaultOpenAiSessionFactory defaultOpenAiSessionFactory = new DefaultOpenAiSessionFactory(configuration);
