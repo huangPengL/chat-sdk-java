@@ -26,8 +26,10 @@ public enum Model {
     CHATGLM_PRO("chatglm_pro", "适用于对知识量、推理能力、创造力要求较高的场景"),
     /** 智谱AI最新模型 */
     CHATGLM_TURBO("chatglm_turbo", "适用于对知识量、推理能力、创造力要求较高的场景"),
+    
+    GLM_3_TURBO("glm-3-turbo", "glm-3-turbo"),
 
-    CHATGLM_4("glm-4", "glm-4")
+    GLM_4("glm-4", "glm-4")
 
     ;
     private final String code;

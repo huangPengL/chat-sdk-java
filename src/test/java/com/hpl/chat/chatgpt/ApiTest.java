@@ -33,6 +33,9 @@ public class ApiTest {
 
     private OpenAiSession openAiSession;
 
+    /**
+     * 创建配置类、工厂模式创建并开启会话
+     */
     @Before
     public void testOpenAiSessionFactory(){
         Configuration configuration = Configuration.builder()
@@ -43,6 +46,11 @@ public class ApiTest {
 
     }
 
+    /**
+     * 聊天接口-流式输出
+     * @throws InterruptedException
+     * @throws JsonProcessingException
+     */
     @Test
     public void testChatCompletionsStream() throws InterruptedException, JsonProcessingException {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
@@ -64,6 +72,9 @@ public class ApiTest {
         new CountDownLatch(1).await();
     }
 
+    /**
+     * 聊天接口-普通输出
+     */
     @Test
     public void testChatCompletions(){
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
@@ -77,6 +88,12 @@ public class ApiTest {
         }
     }
 
+    /**
+     * 聊天接口-异步获取
+     * @throws InterruptedException
+     * @throws JsonProcessingException
+     * @throws ExecutionException
+     */
     @Test
     public void testChatCompletionsFuture() throws InterruptedException, JsonProcessingException, ExecutionException {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
