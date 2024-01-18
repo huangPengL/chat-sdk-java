@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 public class ApiTest {
 
     public static final String OPENAI_HOST = "https://api.openai.com/";
-    public static final String OPENAI_APIKEY = "sess-1KoEcZRoN0u0BHPQxJZbFdoSjZ6A5tLY7RQI1aTi";
+    public static final String OPENAI_APIKEY = "sess-ebMaNZHqCuKrxVMQnjgypZa3u9soT91W9LRfQ1Vt";
 
     private OpenAiSession openAiSession;
 

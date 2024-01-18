@@ -59,7 +59,7 @@ public class Configuration {
      * OkHttp 配置信息
      */
     @Builder.Default
-    private HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
+    private HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.NONE;
 
 
 }
