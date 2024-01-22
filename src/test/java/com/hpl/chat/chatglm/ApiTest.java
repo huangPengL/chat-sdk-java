@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class ApiTest {
 
-    public static final String API_SECRET_KEY = "c3713146757596d58e65e0f7ad882ab6.7lEnzSH949MePSCJ";
+    public static final String API_SECRET_KEY = "";
 
     private GlmSession glmSession;
 
@@ -47,18 +47,18 @@ public class ApiTest {
      * 默认测试prompt
      * @return
      */
-    private List<ChatCompletionRequest.Message> getTestPrompts(){
+    private List<Message> getTestPrompts(){
         String systemContent = "你是一名喝醉酒的流浪汉，性格幽默，喜欢唠嗑。";
         String userContent = "你好，介绍自己";
 
         return ImmutableList.of(
-                ChatCompletionRequest.Message.builder()
-                        .role(Constants.Role.SYSTEM.getCode())
+                Message.builder()
+                        .role(Constants.Role.SYSTEM)
                         .content(systemContent)
                         .build(),
 
-                ChatCompletionRequest.Message.builder()
-                        .role(Constants.Role.USER.getCode())
+                Message.builder()
+                        .role(Constants.Role.USER)
                         .content(userContent)
                         .build()
         );

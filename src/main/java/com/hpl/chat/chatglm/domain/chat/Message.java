@@ -1,7 +1,7 @@
 package com.hpl.chat.chatglm.domain.chat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.hpl.chat.chatgpt.common.Constants;
+import com.hpl.chat.chatglm.common.Constants;
 import lombok.Data;
 
 import java.io.Serializable;

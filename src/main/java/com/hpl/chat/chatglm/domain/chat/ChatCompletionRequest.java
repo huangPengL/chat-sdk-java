@@ -68,14 +68,6 @@ public class ChatCompletionRequest {
     @Builder.Default
     private String sseFormat = "data";
 
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Message {
-        private String role;
-        private String content;
-    }
 
     @Override
     public String toString() {
